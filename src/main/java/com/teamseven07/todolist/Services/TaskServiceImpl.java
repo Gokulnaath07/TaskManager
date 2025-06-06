@@ -8,13 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskService{
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
+    //if we do constructor injection no need for Autowired but not for multiple constructor
+    /*
+     means more than one method with same name but different purpose
+     example
+             public class TaskServiceImpl {
+
+            // Constructor 1 — no arguments
+            public TaskServiceImpl() {
+                // some logic
+            }
+
+            // Constructor 2 — takes a dependency
+            public TaskServiceImpl(TaskRepository taskRepository) {
+                this.taskRepository = taskRepository;
+            }
+        }
+
+     */
+    public TaskServiceImpl(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
     @Override
     public TaskResponseDto createTask(TaskRequestDto dto) {
         TaskEntity entity = new TaskEntity();
@@ -57,7 +76,7 @@ public class TaskServiceImpl implements TaskService{
     }
     @Override
     public TaskResponseDto getTaskById(Integer id){
-        Optional<TaskEntity> findById = taskRepository.findById(id);
+        //Optional<TaskEntity> findById = taskRepository.findById(id);
         return taskRepository.findById(id)
                 .map(TaskMapper::entitytoDto)
                 .orElseThrow(()-> new ResourceNotFoundException("Task with ID " + id + " not found"));
