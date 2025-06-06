@@ -7,4 +7,4 @@ real time weather feature and user authentication feature.
 If iam gonna deploy i will be using Railway it needs this to be dockerized thats why later!!!!.
 
 
-Lets see iam thinking to complete this by this month june all the features including AI part. After that iam moving towards frontend (React).
+Lets see iam thinking to complete this by this month June all the features including AI part. After that iam moving towards frontend (React).
