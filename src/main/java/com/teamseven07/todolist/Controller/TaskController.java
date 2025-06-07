@@ -51,4 +51,16 @@ public class TaskController {
         TaskResponseDto taskByid=taskService.getTaskById(id);
         return ResponseEntity.status(HttpStatus.OK).body(taskByid);
     }
+    @PatchMapping("updateSingle/{id}")
+    public ResponseEntity<TaskResponseDto> singleUpdate(@PathVariable Integer id,
+                                                        @RequestBody TaskStatusDto taskState){
+        TaskResponseDto singleUpdateDto=taskService.singleUpdate(id, taskState);
+        return ResponseEntity.status(HttpStatus.CREATED).body(singleUpdateDto);
+    }
+    @PatchMapping("updateDesc/{id}")
+    public ResponseEntity<TaskResponseDto> updateDesciption(@PathVariable Integer id,
+                                                            @RequestBody TaskDescriptionDto description){
+        TaskResponseDto updateDescription= taskService.updateDescription(id, description);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updateDescription);
+    }
 }

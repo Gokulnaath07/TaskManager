@@ -12,4 +12,7 @@ public interface TaskService {
     TaskResponseDto getTaskById(Integer id);
     TaskResponseDto updateTask(Integer id, TaskRequestDto dto);
     void deleteTask(Integer id);
+    TaskResponseDto singleUpdate(Integer id, TaskStatusDto taskState);
+    TaskResponseDto updateDescription(Integer id, TaskDescriptionDto description);
+
 }

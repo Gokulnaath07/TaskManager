@@ -96,5 +96,21 @@ public class TaskServiceImpl implements TaskService{
             throw new ResourceNotFoundException("Task with this "+ id + " not found");
         }
     }
+    @Override
+    public TaskResponseDto singleUpdate(Integer id, TaskStatusDto taskState){
+        TaskEntity existingTask= taskRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Task with ID " + id + " not found"));
+        existingTask.setTaskState(taskState.getTaskState());
+        TaskEntity updatedSingleTask=taskRepository.save(existingTask);
+        return TaskMapper.entitytoDto(updatedSingleTask);
+    }
+    @Override
+    public TaskResponseDto updateDescription(Integer id, TaskDescriptionDto description){
+        TaskEntity existingTask= taskRepository.findById(id)
+                .orElseThrow(()-> new ResourceNotFoundException("Task with ID " + id + " not found"));
+        existingTask.setDescription(description.getDescription());
+        TaskEntity updateDescription = taskRepository.save(existingTask);
+        return TaskMapper.entitytoDto(updateDescription);
+    }
 
 }
