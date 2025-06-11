@@ -1,7 +1,10 @@
 package com.teamseven07.todolist;
 
+import com.teamseven07.todolist.Services.ImageService;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
@@ -11,5 +14,7 @@ public class TodolistApplication {
     public static void main(String[] args) {
         SpringApplication.run(TodolistApplication.class, args);
     }
+
+
 
 }
