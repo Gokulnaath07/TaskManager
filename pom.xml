@@ -49,6 +49,12 @@
             <version>42.6.0</version>
         </dependency>
 
+        <!--MangoDb -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
         <!-- Validation API -->
         <dependency>
             <groupId>jakarta.validation</groupId>
