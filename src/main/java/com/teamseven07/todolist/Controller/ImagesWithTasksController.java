@@ -33,8 +33,11 @@ public class ImagesWithTasksController {
         List<ImageResposeDto> images=imageService.getImagesById(id);
 
         TaskAndImageDto dto= new TaskAndImageDto();
-        dto.setImages(images);
         dto.setTasks(tasks);
+        if(!images.isEmpty()){
+            dto.setImages(images);
+        }
+
         return ResponseEntity.ok(dto);
     }
 
