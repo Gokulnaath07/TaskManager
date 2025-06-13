@@ -17,6 +17,6 @@ public class TaskAndImageDto {
     private List<ImageResposeDto> images;
     private TaskResponseDto tasks;
 
-    private List<ImageRequestDto> imageRequestDto;
-    private TaskRequestDto taskRequestDto;
+//    private List<ImageRequestDto> imageRequestDto;
+//    private TaskRequestDto taskRequestDto;
 }
