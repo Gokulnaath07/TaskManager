@@ -3,14 +3,18 @@ package com.teamseven07.todolist.Controller;
 
 import com.teamseven07.todolist.Model.ImageRequestDto;
 import com.teamseven07.todolist.Model.ImageResposeDto;
+import com.teamseven07.todolist.Model.ImagesEntity;
 import com.teamseven07.todolist.Services.ImageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/images")
@@ -36,8 +40,20 @@ public class ImageController {
 
     }
 
-//    @GetMapping("/images/{taskId}")
-//    public ResponseEntity<List<ImageResposeDto>> getAllImages(@PathVariable Integer taskId){
-//        List<ImageResposeDto> responses = imageService.getAllImages(taskId);
-//    }
+    @GetMapping("/view/{id}")
+    public ResponseEntity<byte[]> getAllImages(@PathVariable String id){
+        ImagesEntity images=imageService.getImageById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Image not found"));
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(images.getFileType()))
+                .body(images.getImageData());
+    }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<Void> deleteImage(@PathVariable String id){
+        imageService.getImageById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Image not found"));
+        imageService.deleteImageById(id);
+        return ResponseEntity.noContent().build();
+    }
 }
