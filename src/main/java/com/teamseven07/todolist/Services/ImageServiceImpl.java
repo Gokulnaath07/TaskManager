@@ -12,7 +12,9 @@ import org.springframework.web.multipart.MultipartFile;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -76,9 +78,17 @@ public class ImageServiceImpl implements ImageService{
         if(!responses.isEmpty()){
             return ImageMapper.entitytoDtoList(responses);
         }else{
-            throw new RuntimeException("Task with this "+ taskId + " not found");
+            return Collections.emptyList();
         }
 
+    }
+    @Override
+    public Optional<ImagesEntity> getImageById(String id) {
+        return imageRepository.findById(id);
+    }
+    @Override
+    public void deleteImageById(String id) {
+        imageRepository.deleteById(id);
     }
 
 }

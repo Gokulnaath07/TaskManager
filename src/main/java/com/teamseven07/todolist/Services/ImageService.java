@@ -6,6 +6,7 @@ import com.teamseven07.todolist.Model.ImagesEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ImageService {
@@ -31,4 +32,6 @@ public interface ImageService {
     public List<ImageResposeDto> uploadImage(ImageRequestDto dto, MultipartFile[] files);
     public void deleteImage(Integer taskId);
     public List<ImageResposeDto> getImagesById(Integer taskId);
+    public Optional<ImagesEntity> getImageById(String id);
+    public void deleteImageById(String id);
 }
