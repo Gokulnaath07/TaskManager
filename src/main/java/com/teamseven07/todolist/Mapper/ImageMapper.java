@@ -19,9 +19,11 @@ public class ImageMapper {
     }
     public static ImageResposeDto entitytoDto(ImagesEntity entity){
         return ImageResposeDto.builder()
+                .id(entity.getId())
                 .taskId(entity.getTaskId())
                 .fileName(entity.getFileName())
                 .fileType(entity.getFileType())
+                .viewUrl("/api/images/view/" + entity.getId())
                 .build();
     }
     public static ImagesEntity multiparttoEntity(MultipartFile files, Integer taskId)throws IOException{
