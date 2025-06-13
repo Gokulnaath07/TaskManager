@@ -30,5 +30,5 @@ public interface ImageService {
 
     public List<ImageResposeDto> uploadImage(ImageRequestDto dto, MultipartFile[] files);
     public void deleteImage(Integer taskId);
-//    public List<ImageResposeDto> getImages(Integer taskId);
+    public List<ImageResposeDto> getImagesById(Integer taskId);
 }
