@@ -36,12 +36,7 @@ public class TaskServiceImpl implements TaskService{
     }
     @Override
     public TaskResponseDto createTask(TaskRequestDto dto) {
-        TaskEntity entity = new TaskEntity();
-        entity.setTitle(dto.getTitle());
-        entity.setDescription(dto.getDescription());
-        entity.setTaskState(dto.getTaskState());
-        entity.setDateTime(dto.getDateTime());
-
+        TaskEntity entity = TaskMapper.dtoToEntity(dto);
         TaskEntity savedEntity = taskRepository.save(entity);
 
         return TaskMapper.entitytoDto(savedEntity);
