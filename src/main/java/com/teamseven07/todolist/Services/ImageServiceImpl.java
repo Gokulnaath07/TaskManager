@@ -69,5 +69,16 @@ public class ImageServiceImpl implements ImageService{
             throw new ResourceNotFoundException("Task with this "+ taskId + " not found");
         }
     }
+    @Override
+    public List<ImageResposeDto> getImagesById(Integer taskId) {
+
+        List<ImagesEntity> responses= imageRepository.findByTaskId(taskId);
+        if(!responses.isEmpty()){
+            return ImageMapper.entitytoDtoList(responses);
+        }else{
+            throw new RuntimeException("Task with this "+ taskId + " not found");
+        }
+
+    }
 
 }
