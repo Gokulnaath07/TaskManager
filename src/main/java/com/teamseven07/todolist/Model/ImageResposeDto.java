@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ImageResposeDto {
 
-
+    private String id;
     private Integer taskId;
     private String fileName;
     private String fileType;
-
+    private String viewUrl;
 }
