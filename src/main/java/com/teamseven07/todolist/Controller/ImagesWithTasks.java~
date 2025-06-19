@@ -1,0 +1,35 @@
+package com.teamseven07.todolist.Controller;
+
+
+import com.teamseven07.todolist.Model.ImageResposeDto;
+import com.teamseven07.todolist.Model.TaskAndImageDto;
+import com.teamseven07.todolist.Model.TaskResponseDto;
+import com.teamseven07.todolist.Services.ImageService;
+import com.teamseven07.todolist.Services.TaskService;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/iWithT")
+@CrossOrigin(origins="*")
+public class ImagesWithTasks {
+
+    final private ImageService imageService;
+    final private TaskService taskService;
+
+    public ImagesWithTasks(ImageService imageService, TaskService taskService) {
+        this.imageService=imageService;
+        this.taskService=taskService;
+
+    }
+
+    @GetMapping("/taskImages/{id}")
+    public ResponseEntity<TaskAndImageDto> getImagesOfTask(@PathVariable Integer id){
+        TaskResponseDto tasks=taskService.getTaskById(id);
+        List<ImageResposeDto> images=imageService.getImagesById(id);
+
+        Task
+    }
+}

@@ -18,7 +18,3 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 #Docker
 spring.docker.compose.enabled=false
 
-#Security
-spring.security.user.name=maash07
-spring.security.user.password=Gokul003!
-
