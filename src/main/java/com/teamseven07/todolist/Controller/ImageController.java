@@ -5,10 +5,12 @@ import com.teamseven07.todolist.Model.ImageRequestDto;
 import com.teamseven07.todolist.Model.ImageResposeDto;
 import com.teamseven07.todolist.Model.ImagesEntity;
 import com.teamseven07.todolist.Services.ImageService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
@@ -25,6 +27,11 @@ public class ImageController {
 
     public ImageController(ImageService imageService){
         this.imageService=imageService;
+    }
+
+    @GetMapping("get/csrf-token")
+    public CsrfToken getCSRFToken(HttpServletRequest request) {
+        return (CsrfToken) request.getAttribute("_csrf");
     }
 
     @PostMapping("/upload")
