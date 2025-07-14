@@ -1,0 +1,4 @@
+package com.teamseven07.todolist.Model;
+
+public class UserPrincipal {
+}

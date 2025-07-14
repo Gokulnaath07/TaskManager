@@ -35,6 +35,7 @@ public class TaskEntity {
 
     @Enumerated(EnumType.STRING)
     private TypeEnum taskState;
+
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dateTime;
 
