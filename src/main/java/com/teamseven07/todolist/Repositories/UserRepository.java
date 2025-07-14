@@ -1,0 +1,10 @@
+package com.teamseven07.todolist.Repositories;
+
+import com.teamseven07.todolist.Model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    User findByUsername(String username);
+}
